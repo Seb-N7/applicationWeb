@@ -19,7 +19,7 @@ import streaming.service.UtilisateurService;
  *
  * @author admin
  */
-@WebServlet(name = "PagedecoServlet", urlPatterns = {"/pagedeco"})
+@WebServlet(name = "PagedecoServlet", urlPatterns = {"/Pagedeco"})
 public class PagedecoServlet extends HttpServlet {
 
     @Override
@@ -38,13 +38,16 @@ public class PagedecoServlet extends HttpServlet {
       Utilisateur u = new UtilisateurService().rechercheParLoginEtMdp(pseudo, mdp);
       
       
-      //je suis leggé correctement
-      resp.addCookie(new Cookie("pseudo",pseudo));
-      resp.addCookie(new Cookie("mdp",mdp));
-      resp.addCookie(new Cookie ("util_type", u.getTypeuti().toString()));
+      //je suis loggé correctement
+      req.getSession().setAttribute("utilConnecte",u);
       
-
-        //je suis loggé correctement
+      
+      
+//      resp.addCookie(new Cookie("pseudo",pseudo));
+//      resp.addCookie(new Cookie("mdp",mdp));
+//      resp.addCookie(new Cookie ("util_type", u.getTypeuti().toString()));
+      
+        
         // redirection vers ecran listage des films
         resp.sendRedirect("films_liste");
     }

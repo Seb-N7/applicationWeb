@@ -9,7 +9,5 @@
 <link href="CSS/Style1.css" rel="stylesheet" type="text/css"/>
 <link href="CSS/Style2.css" rel="stylesheet" type="text/css"/>
 
-<c:choose>
-    <c:when test="${cookie.style_prefere=='blanc'}">
-    </c:when>
-</c:choose>
+
+<link href="CSS/${cookie.style_prefere.getValue()}.css" rel="stylesheet" type="text/css"/>

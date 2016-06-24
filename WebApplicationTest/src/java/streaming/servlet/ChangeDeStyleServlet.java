@@ -13,33 +13,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 /**
  *
  * @author admin
  */
-@WebServlet(name = "DecoServlet", urlPatterns = {"/decoServlet"})
-public class DecoServlet extends HttpServlet {
+@WebServlet(name = "ChangeDeStyleServlet", urlPatterns = {"/change_style"})
+public class ChangeDeStyleServlet extends HttpServlet {
 
+   @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Cookie c;
 
-        
-        //sup cookies
-        req.getSession().invalidate();
-//        //sup cookie
-//        c = new Cookie("login", null);
-//        c.setMaxAge(0);
-//        resp.addCookie(c);
-//
-//        c = new Cookie("mdp", null);
-//        c.setMaxAge(0);
-//        resp.addCookie(c);
-//
-//        c = new Cookie("util_type", null);
-//        c.setMaxAge(0);
-//        resp.addCookie(c);
-
-        resp.sendRedirect("films_liste");
-}
-
+     String style = req.getParameter("style");
+     
+     resp.addCookie(new Cookie ("style_prefere", style));
+     resp.sendRedirect("films_liste");
+    }
+    
 }

@@ -13,21 +13,20 @@
 <c:choose>
 
 
-    <c:when test="${cookie.pseudo==null}">
+    <c:when test="${utilConnecte.pseudo==null}">
         <a href="crea_util">Inscription</a>
         <a href="Pagedeco">Connexion</a>     
     </c:when>
 
-    <c:when test="${cookie.pseudo!=null}"> 
-        <a href="decoServlet">Déconnexion</a>
-    </c:when>
-
     <c:otherwise>
-        <c:if test="${cookie.util_type.getValue()=='ADMIN'}">
+        <a href="decoServlet">Déconnexion</a>
+        <c:if test="${utilConnecte.typeuti=='ADMIN'}">
             <a href="ajout_film">Ajout Film</a>
             <a href="ajout_serie">Ajout Serie</a>
         </c:if>
     </c:otherwise>    
 
-
 </c:choose>
+
+<a href="change_style?style=Style1">Style1</a>
+<a href="change_style?style=Style2">Style2</a>
